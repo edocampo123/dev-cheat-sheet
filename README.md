@@ -519,6 +519,23 @@ or
 	}
 ```
 
+#### Check user in wp_users table
+
+```php
+ 	    wp_hash_password($pass); # Magic function. Don't delete! Needed for wp default password hashing
+            $password_hashed = $row['user_pass']; # Password from wp_users table
+            $plain_password = $_POST['password']; # Password inputted by the user
+            
+	    $wp_hasher = new PasswordHash(8, TRUE);
+            
+            if($wp_hasher->CheckPassword($plain_password, $password_hashed)) {
+               #password match...
+            } else {
+               #password hashing doesn't match...
+            }
+
+
+```
 #### Pagination
 
 Save this as `function-pagination.php`
